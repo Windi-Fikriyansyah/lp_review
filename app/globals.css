@@ -436,7 +436,7 @@ input::placeholder {
 
 .pay input {
   accent-color: var(--ink);
-  flex-none;
+  flex: none;
 }
 
 .pay label:has(input:checked) {
