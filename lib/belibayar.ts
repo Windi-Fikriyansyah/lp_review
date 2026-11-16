@@ -57,10 +57,17 @@ export async function getChannels(): Promise<Channel[]> {
   const path = `${prefix}/channels`;
   const res = await fetch(base + path, {
     headers: { 'X-Api-Key': apiKey, 'X-Signature': hmacHex(path, secret) },
-    next: { revalidate: 300 },
+    cache: 'no-store',
   });
   const data = await parse(res);
-  return (data.channels ?? []) as Channel[];
+  const channels = ((data.channels ?? []) as any[]).filter((c) => {
+    if (typeof c.status === 'string' && !['active', 'live', 'enabled'].includes(c.status.toLowerCase())) {
+      return false;
+    }
+    if (c.is_active === false || c.active === false) return false;
+    return true;
+  });
+  return channels as Channel[];
 }
 
 /** POST /payment/charge — canonical signature = raw body (string yang sama persis dengan yang dikirim). */
