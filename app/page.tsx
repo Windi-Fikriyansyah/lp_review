@@ -17,7 +17,7 @@ export default function Home() {
           <div>
             <h1>Toko baru tanpa ulasan? Pembeli cenderung pergi.</h1>
             <p className="lead">Reach Leads mengambil ulasan produk dari marketplace dan menampilkannya di halaman produk tokomu. Tempel link, klik impor, selesai dalam hitungan menit.</p>
-            <a href="#beli" className="btn">Dapatkan akses selamanya</a>
+            <a href="#beli" className="btn hero-cta">Dapatkan akses selamanya</a>
             <p className="sub">Bayar sekali {price}. Tanpa langganan bulanan.</p>
           </div>
           <div className="demo" aria-label="Contoh halaman produk sebelum dan sesudah memakai Reach Leads">
